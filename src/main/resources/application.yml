@@ -1,0 +1,35 @@
+server:
+  port: 0
+  context-path: ""
+  undertow:
+    io-threads: 2
+    worker-threads: 200
+
+spring:
+  application:
+    name: grpc-demo-provider
+  http:
+    encoding.charset: UTF-8
+    encoding.enable: true
+    encoding.force: true
+  data:
+    mongodb:
+#      host: 120.25.93.63
+#      port: 27017
+      uri: mongodb://localhost:27017/local
+
+# 重要：grpc服务器使用的端口
+grpc:
+  server:
+    port: 9898
+
+
+logging:
+  level:
+    org.springframework: INFO
+    cn.vpclub.spring.boot: INFO
+    cn.vpclub.moses: INFO
+  pattern:
+    console: "%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{64})  - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file: logs/application.log

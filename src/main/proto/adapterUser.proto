@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option java_package = "cn.vpclub.grpc.demo.user.consumer.api";
+option java_outer_classname = "AdapterUserProto";
+
+service AdapterUserService {
+    //查询
+    rpc findUser (User) returns (User){}
+    //插入
+    rpc insertUser (User) returns (UserResponse){}
+    //更新
+    rpc updateUser (User) returns (UserResponse){}
+}
+message User {
+    string id = 1;
+    string username = 2;
+    int32 age = 3;
+    int64 createDate = 4;
+    int64 updateDate = 5;
+    int32 delFlag = 6;
+    string remark = 7;
+}
+message UserResponse {
+    string retCode = 1;
+    string retMsg = 2;
+    string tid = 3;
+    User result = 4;
+}
